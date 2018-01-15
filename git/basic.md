@@ -1,18 +1,30 @@
-Привязать ssh-ключ к удаленному репозиторию (Linux)
-===================================================
-1. Создать ключ как обычно
+Привязать ssh-ключ к удаленному репозиторию
+===========================================
+
+## Linux
+
+1. Создать ключ `ssh-keygen -f ~/.ssh/id_rsa`
 2. Сохранить публичный ключ в профиле пользователя github (bitbucket)
-3. Связать ключ с доменом через ~/.ssh/config:
+3. Добавить ссылку на удаленный репозиторий:  
+`git remote add origin git@server.remote:/path/to/repo.git`
+4. Связать ключ с доменом через ~/.ssh/config:
 ```
 Host preferredName
     HostName bitbucket.org
     User git
     IdentityFile ~/.ssh/id_rsa
 ```
-5. Добавить удаленный репозиторий:  
-`git remote add origin git@server.remote:/path/to/repo.git`
+5. Проверить ключ `ssh -T preferredName`
 6. Отправить локальный репозиторий на удаленный:  
 `git push -u origin master`
+
+
+## Windows (git bash)
+1. Шаг 1-3 из [Linux](#linux)
+2. `eval $(ssh-agent -s)`
+3. `ssh-add ~/.ssh/id_rsa`
+
+Шаг 2-3 придется делать после каждого запуска Windows. [Подробнее о ключах в Windows.](https://help.github.com/articles/error-permission-denied-publickey/)
 
 
 Работа с репозиториями
