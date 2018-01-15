@@ -23,3 +23,10 @@
 ### Выключить адаптивность
 `src/assets/scss/foundation-emails.scss`: убрать `@import 'components/media-query';`
 `src/layouts/default.html`: убрать `<meta name="viewport" content="width=device-width">`
+
+### Использовать шаблон, отличный от layouts/default.html
+```
+---
+layout: another-layout
+---
+```
